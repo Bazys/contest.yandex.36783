@@ -1,4 +1,18 @@
 /**
+ * На стол в ряд выложены карточки, на каждой карточке написано натуральное
+ * число. За один ход разрешается взять карточку либо с левого, либо с правого
+ * конца ряда. Всего можно сделать k ходов. Итоговый счет равен сумме чисел на
+ * выбранных карточках. Определите, какой максимальный счет можно получить по
+ * итогам игры.
+ * Формат ввода
+ * В первой строке записано число карточек n (1≤n≤10^5). Во второй строке
+ * записано число ходов k (1≤k≤n).
+ * В третьей строке через пробел даны числа, записанные на карточках. i-е по
+ * счету число записано на i-й слева карточке. Все числа натуральные и не
+ * превосходят 10^4
+ * Формат вывода
+ * Выведите единственное число —- максимальную сумму очков, которую можно
+ * набрать, сделав k ходов.
  * [1 1 9 2 2 2 6]
  *  i=0 sum = 10
  *  i=1 sum = sum + 1 - 2 = 10 + 1 - 2 = 9
@@ -9,28 +23,27 @@
 #include <vector>
 
 int maxScore(const std::vector<int> &cardPoints, const int k) {
-    int sum{0};
-    auto n = cardPoints.size();
-    for (int i = 0; i < k; i++) {
-        sum += cardPoints[i];
-    }
-    auto max = sum;
-    for (int i = k - 1; i >= 0; i--) {
-        sum -= cardPoints[i];
-        sum += cardPoints[n - k + i];
-        max = std::max(sum, max);
-    }
-    return max;
+  int sum{0};
+  auto n = cardPoints.size();
+  for (int i = 0; i < k; i++) {
+    sum += cardPoints[i];
+  }
+  auto max = sum;
+  for (int i = k - 1; i >= 0; i--) {
+    sum -= cardPoints[i];
+    sum += cardPoints[n - k + i];
+    max = std::max(sum, max);
+  }
+  return max;
 }
 
-
 int main() {
-    int n, k;
-    scanf("%d %d", &n, &k);
+  int n, k;
+  scanf("%d %d", &n, &k);
 
-    std::vector<int> cards(n);
-    for (auto &el: cards) {
-        scanf("%d", &el);
-    }
-    printf("%d\n", maxScore(cards, k));
+  std::vector<int> cards(n);
+  for (auto &el : cards) {
+    scanf("%d", &el);
+  }
+  printf("%d\n", maxScore(cards, k));
 }
