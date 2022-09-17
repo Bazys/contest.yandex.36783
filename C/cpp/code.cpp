@@ -8,32 +8,41 @@
  * Выведите единственное число — количество пар, подходящих под указанное выше
  * условие.
  */
+#pragma GCC optimize("O3")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("no-stack-protector")
+#pragma GCC optimize("fast-math")
+#pragma GCC optimize("trapv")
+#pragma GCC target("sse4")
+
+#include <cmath>
 #include <iostream>
 #include <vector>
 
-using namespace std;
+using ll = long long;
 
-long long getNumberOfGoodPairs(int n, const vector<int>& numbers) {
-  // your code goes here
-  return 0;
-}
-
-int readInt() {
-  int x;
-  cin >> x;
-  return x;
-}
-
-vector<int> readList(int n) {
-  vector<int> res(n);
-  for (int i = 0; i < n; i++) {
-    cin >> res[i];
+ll getNumberOfGoodPairs(const std::vector<ll>& numbers) {
+  auto n = numbers.size();
+  ll res{0};
+  if (n > 0) {
+    for (auto i = 0; i < n; ++i) {
+      for (auto j = i + 1; j < n; ++j) {
+        if (abs(numbers[i] - numbers[j]) % 200 == 0) {
+          res++;
+        }
+      }
+    }
   }
   return res;
 }
 
 int main() {
-  int n = readInt();
-  vector<int> numbers = readList(n);
-  cout << getNumberOfGoodPairs(n, numbers);
+  int n;
+  scanf("%d", &n);
+  std::vector<ll> numbers(n);
+  for (auto& el : numbers) {
+    scanf("%lld", &el);
+  }
+  printf("%lld\n", getNumberOfGoodPairs(numbers));
 }
