@@ -27,7 +27,7 @@ long long getNumberOfGoodPairs(const std::vector<int>& numbers) {
 }
 
 int main() {
-  //  freopen("input.txt", "r", stdin);
+  freopen("input.txt", "r", stdin);
   int n{0};
   scanf("%d", &n);
   if (n == 1) {
@@ -41,4 +41,5 @@ int main() {
     el = num % 200;
   }
   printf("%lld\n", getNumberOfGoodPairs(numbers));
+  return 0;
 }
