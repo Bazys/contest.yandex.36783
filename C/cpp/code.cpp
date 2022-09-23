@@ -9,31 +9,36 @@
  * условие.
  */
 #include <iostream>
+#include <map>
 #include <vector>
 
-using namespace std;
-
-long long getNumberOfGoodPairs(int n, const vector<int>& numbers) {
-  // your code goes here
-  return 0;
-}
-
-int readInt() {
-  int x;
-  cin >> x;
-  return x;
-}
-
-vector<int> readList(int n) {
-  vector<int> res(n);
-  for (int i = 0; i < n; i++) {
-    cin >> res[i];
+long long getNumberOfGoodPairs(const std::vector<int>& numbers) {
+  std::map<int, int> counter;
+  for (auto& el : numbers) {
+    counter[el]++;
+  }
+  int res{0};
+  for (auto const& [key, val] : counter) {
+    if (val > 1) {
+      res += val - 1;
+    }
   }
   return res;
 }
 
 int main() {
-  int n = readInt();
-  vector<int> numbers = readList(n);
-  cout << getNumberOfGoodPairs(n, numbers);
+  //  freopen("input.txt", "r", stdin);
+  int n{0};
+  scanf("%d", &n);
+  if (n == 1) {
+    printf("0\n");
+    return 0;
+  }
+  std::vector<int> numbers(n);
+  for (auto& el : numbers) {
+    int num{0};
+    scanf("%d", &num);
+    el = num % 200;
+  }
+  printf("%lld\n", getNumberOfGoodPairs(numbers));
 }
