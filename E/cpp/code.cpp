@@ -1,15 +1,13 @@
 #include <iostream>
 
-using namespace std;
-
-
-int convertToArabic(const string& romanNumber) {
-    // your code goes here
-    return 0;
+int convertToArabic(const std::string& romanNumber) {
+  // your code goes here
+  return 0;
 }
 
 int main() {
-    string romanNumber;
-    cin >> romanNumber;
-    cout << convertToArabic(romanNumber);
+  std::string romanNumber;
+  std::cin >> romanNumber;
+  printf("%d\n", convertToArabic(romanNumber));
+  return 0;
 }

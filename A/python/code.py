@@ -1,7 +1,7 @@
 from typing import Tuple
 
 def get_sum(a: int, b: int) -> int:
-    # Здесь реализация вашего решения
+    return a+b
     pass
 
 def read_input() -> Tuple[int, int]:

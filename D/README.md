@@ -14,7 +14,7 @@
 Ваша задача — найти наиболее длинный возрастающий путь в матрице. Путь возрастающий, если значения в посещаемых клетках
 строго возрастают от начала пути к его концу.
 
-LeetCode [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)
+LeetCode Hard [329. Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)
 
 ### Формат ввода
 

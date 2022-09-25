@@ -9,22 +9,26 @@ bool canMove(int i, int j, int n, int m) {
 
 int dfs(const std::vector<vi> &matrix, int i, int j, int n, int m,
         std::vector<vi> &distances) {
-  if (!canMove(i, j, n, m)) {
+  if (!canMove(i, j, n, m)) {  // проверка, можем ли перейти в зту ячейку.
     return 0;
   }
-  if (distances[i][j] != -1) {
+  if (distances[i][j] !=
+      -1) {  // если эту ячейку уже посещали, возвращаем результат
     return distances[i][j];
   }
   int res = 1;
-  int dx[4] = {-1, 1, 0, 0};
+  int dx[4] = {-1, 1, 0, 0};  // массивы координат, куда можем перемещаться
   int dy[4] = {0, 0, -1, 1};
-  for (int k = 0; k < 4; k++) {  // can go 4 direction
+  for (int k = 0; k < 4; k++) {  // перебираем 4 направления
     int newi = i + dx[k];
     int newj = j + dy[k];
-    if (canMove(newi, newj, n, m)) {
-      if (matrix[newi][newj] > matrix[i][j] &&
-          distances[i][j] < distances[newi][newj] + 1) {
-        res = std::max(res, dfs(matrix, newi, newj, n, m, distances) + 1);
+    if (canMove(newi, newj, n,
+                m)) {  // проверка, можем ли перейти в зту ячейку.
+      if (matrix[newi][newj] > matrix[i][j] &&  // возрастающий путь
+          distances[i][j] <
+              distances[newi][newj] + 1) {  // новый путь длиннее чем старый
+        res =
+            std::max(res, dfs(matrix, newi, newj, n, m, distances) + 1);  // dfs
       }
     }
   }
