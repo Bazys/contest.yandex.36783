@@ -13,21 +13,21 @@
 #include <vector>
 
 long long getNumberOfGoodPairs(const std::vector<int>& numbers) {
-  std::map<int, int> counter;
-  for (auto& el : numbers) {
-    counter[el]++;
+  std::vector<long long> counter(200, 0);
+  // получаем количество одинаковых остатков от деления на 200
+  for (const int& el : numbers) {
+    counter[el % 200]++;
   }
-  int res{0};
-  for (auto const& [key, val] : counter) {
-    if (val > 1) {
-      res += val - 1;
-    }
+  long long res{0};
+  // суммируем количество возможных перестановок пар
+  for (const long long& val : counter) {
+    res += (val * (val - 1) / 2);
   }
   return res;
 }
 
 int main() {
-//  freopen("input.txt", "r", stdin);
+  //  freopen("input.txt", "r", stdin);
   int n{0};
   scanf("%d", &n);
   if (n == 1) {
@@ -36,9 +36,7 @@ int main() {
   }
   std::vector<int> numbers(n);
   for (auto& el : numbers) {
-    int num{0};
-    scanf("%d", &num);
-    el = num % 200;
+    scanf("%d", &el);
   }
   printf("%lld\n", getNumberOfGoodPairs(numbers));
   return 0;
