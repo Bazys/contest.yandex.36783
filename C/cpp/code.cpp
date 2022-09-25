@@ -27,7 +27,7 @@ long long getNumberOfGoodPairs(const std::vector<int>& numbers) {
 }
 
 int main() {
-  freopen("input.txt", "r", stdin);
+//  freopen("input.txt", "r", stdin);
   int n{0};
   scanf("%d", &n);
   if (n == 1) {
