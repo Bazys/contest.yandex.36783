@@ -1,3 +1,10 @@
+#pragma GCC optimize("O3")
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC optimize("no-stack-protector")
+#pragma GCC optimize("fast-math")
+#pragma GCC optimize("trapv")
+#pragma GCC target("sse4")
 #include <algorithm>
 #include <iostream>
 #include <stack>
@@ -29,6 +36,8 @@ std::string makeGood(const std::string& s) {
 
 int main() {
   std::string probablyBadString;
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(NULL);
   std::cin >> probablyBadString;
   std::cout << makeGood(probablyBadString);
 }
