@@ -1,11 +1,19 @@
-# На стол в ряд выложены карточки, на каждой карточке написано натуральное число. За один ход разрешается взять карточку
-# либо с левого, либо с правого конца ряда. Всего можно сделать k ходов. Итоговый счет равен сумме чисел на выбранных
-# карточках. Определите, какой максимальный счет можно получить по итогам игры.
-def get_card_count(n, k, cards) -> int:
+from typing import List
+
+
+def maxScore(cardPoints: List[int], k: int) -> int:
+    size = len(cardPoints) - k
+    minSubArraySum = curr = sum(cardPoints[:size])
+
+    for i in range(len(cardPoints) - size):
+        curr += cardPoints[size + i] - cardPoints[i]
+        minSubArraySum = min(minSubArraySum, curr)
+
+    return sum(cardPoints) - minSubArraySum
 
 
 n = int(input())
 k = int(input())
 cards = list(map(int, input().split()))
 
-print(get_card_count(n, k, cards))
+print(maxScore(cards, k))
